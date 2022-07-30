@@ -64,15 +64,15 @@ function send_to_phone_numbers_ref(value1,C,B,D,E,I,G,K,H,type){
     const phn_no_ref=database.ref("Phone numbers");
     phn_no_ref.once("value",(district_ref)=>{
         district_ref.forEach((dist)=>{
-            if(dist.key.toLowerCase().trim()===C.toLowerCase().trim()){
+            if(dist.key.trim()===C.trim()){
                 //database.ref("value").set(dist.key.toLowerCase()+" = "+C.toLowerCase());
                 const dist_ref=database.ref("Phone numbers/"+dist.key);
                 dist_ref.once("value",(station_ref)=>{
                     station_ref.forEach((stat)=>{
                         const stat_key=stat.key.trim();
                         //database.ref("vstat_key").set(stat_key.toLowerCase()+"");
-                        const station_B="ps "+B.toLowerCase().trim();
-                        if(stat_key.toLowerCase()===station_B){
+                        const station_B="PS "+B.trim();
+                        if(stat_key===station_B){
                             const phone_number=stat.val();
                             //database.ref("vphone").set(phone_number);
                             const users_ref=database.ref("users");
